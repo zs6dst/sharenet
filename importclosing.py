@@ -59,7 +59,14 @@ try:
 	cleanup = db.cursor()
 	for lzh in files:
 		logging.debug(lzh)
+
+		#Check if downloaded file is empty
+		statinfo = os.stat(lzh)
+		if statinfo.st_size == 0L:
+			raise ImportError(fileName + " is empty")
 		(filePath, fileName) = os.path.split(lzh)
+
+		#Check if downloaded file has been imported
 		cursor = db.cursor()
 		sql = "call isFileImported('%s')" % fileName
 		logging.debug(sql)
