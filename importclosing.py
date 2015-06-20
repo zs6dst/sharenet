@@ -64,10 +64,10 @@ try:
 		statinfo = os.stat(lzh)
 		if statinfo.st_size == 0L:
 			raise ImportError(fileName + " is empty")
-		(filePath, fileName) = os.path.split(lzh)
 
 		#Check if downloaded file has been imported
 		cursor = db.cursor()
+		(filePath, fileName) = os.path.split(lzh)
 		sql = "call isFileImported('%s')" % fileName
 		logging.debug(sql)
 		cursor.execute(sql)
