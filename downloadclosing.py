@@ -54,7 +54,10 @@ while (d <= datetime.date.today()):
 		lastfile.close()
 		logging.info("Done.")
 	except urllib2.HTTPError, e:
-		if (e.code == 404):
+		if (e.code == 401):
+			logging.error("Basic authentication failed!")
+			break
+		elif (e.code == 404):
 			logging.warning(name + " not found")
 		else:
 			logging.error("HTTP ERROR: " + str(e.code) + " " + e.msg)

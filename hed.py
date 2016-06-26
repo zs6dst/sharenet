@@ -62,6 +62,8 @@ def parse(fileName, db):
 				updateCursor.close()
 				if newSector:
 					raise ImportError("New sector: %s" % x[2])
+			elif x[0] == "SPL2":
+				continue
 			else:
 				raise ImportError("Unknown command: %s" % x[0])
 		f.close()
