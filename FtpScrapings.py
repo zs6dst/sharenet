@@ -8,7 +8,7 @@ ACT = "D"
 
 try:
 	logging.info("Logging in...")
-	ftp = FTP("www.zeniton.co.za", "zenitrsx","VRx99pnb")
+	ftp = FTP("www.zeniton.co.za", "username","password")
 	logging.info("Logged in.")
 	
 	ftp.cwd(DIR)
